@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">Geburtstagsplaner</string>
+    <string name="excel">exports the database to an excel file</string>
+    <string name="add">transacts to the birthdayCreation fragment in order to add db entry</string>
+    <string name="importing">Importieren</string>
+    <string name="all_birthdays">Alle Geburtstage</string>
+    <string name="pathname_for_excel_file">Gib den Pfad für die Excel Datei ein.</string>
+    <string name="name">Name</string>
+    <string name="waehle_geburtstag">Wähle Geburtstag</string>
+    <string name="hinzufuegen">Hinzufügen</string>
+    <string name="textfield1">TextField1</string>
+    <string name="textfield2">TextField2</string>
+    <string name="back_arrow">back arrow</string>
+    <string name="eintrag_aendern">Eintrag ändern</string>
+    <string name="eintrag_loeschen">Eintrag löschen</string>
+    <string name="exportieren">Exportieren</string>
+    <string name="importieren">Importieren</string>
+    <string name="about">About</string>
+    <string name="e_mail">E-Mail</string>
+    <string name="channel_description"> This channel provides the notification if someone has birthday
+        this day and sends it to the user</string>
+</resources>

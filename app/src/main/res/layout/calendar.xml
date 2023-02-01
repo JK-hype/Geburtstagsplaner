@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:orientation="vertical">
+
+
+    <CalendarView
+        android:layout_width="match_parent"
+        android:layout_height="340dp"
+        android:id="@+id/calenderview"/>
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="140dp"
+        android:background="@drawable/listview_rectangle"
+        android:id="@+id/lv_entries_of_date"/>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingTop="20dp">
+
+        <Button
+            android:id="@+id/btn_listAllEntries"
+            android:layout_width="150dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="20dp"
+            android:background="@drawable/silver_button"
+            android:text="@string/all_birthdays" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/btn_addData"
+            android:contentDescription="@string/add"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="290dp"
+            android:tint="@color/black"
+            app:backgroundTint="@android:color/white"
+            app:srcCompat="@android:drawable/ic_input_add"/>
+
+    </RelativeLayout>
+
+</LinearLayout>

@@ -1,0 +1,4 @@
+include ':ComplexView'
+include ':ComplexViewExample'
+include ':app'
+rootProject.name = "Geburtstagsplaner"
