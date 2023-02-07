@@ -1,5 +1,5 @@
 # Geburtstagsplaner
-This Android App saves, notifies of, exports and imports birthdays. It helps you remind the birthdays of all your favourites people.
+This Android App saves, notifies of, exports and imports birthdays. It helps you remember the birthdays of all your favourite people.
 
 It does not need any internet connection (yet).
 
