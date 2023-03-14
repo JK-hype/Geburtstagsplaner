@@ -3,7 +3,9 @@ package com.example.Geburtstagsplaner.util;
 import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Context;
+import android.content.Intent;
 
 import androidx.annotation.NonNull;
 
@@ -13,6 +15,7 @@ import androidx.work.Worker;
 import androidx.work.WorkerParameters;
 
 import com.example.Geburtstagsplaner.R;
+import com.example.Geburtstagsplaner.WhatsAppOpener;
 import com.example.Geburtstagsplaner.pojo.Birthday;
 
 import java.util.ArrayList;
@@ -60,9 +63,14 @@ public class NotificationsWorker extends Worker {
         //random number
         int i = 888;
         for (String name : names) {
+            Intent intent = new Intent(getApplicationContext(), WhatsAppOpener.class);
+            intent.putExtra("name", name);
+            PendingIntent pendingIntent = PendingIntent.getActivity(getApplicationContext(),
+                    0, intent, PendingIntent.FLAG_ONE_SHOT);
+
             builder.setContentText(name + " hat heute " + age.get(names.indexOf(name))
                     + ". Geburtstag. Gratuliere ihm/ihr!").
-                    setContentTitle("Geburtstag von " + name);
+                    setContentTitle("Geburtstag von " + name).setContentIntent(pendingIntent);
             Notification notification = builder.build();
             notificationManager.notify(i, notification);
             i++;

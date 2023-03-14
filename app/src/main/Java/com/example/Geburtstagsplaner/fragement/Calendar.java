@@ -89,9 +89,9 @@ public class Calendar extends Fragment {
         btnAddDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                BirthdayCreation birthdayCreation = new BirthdayCreation();
+                BirthdayCreator birthdayCreator = new BirthdayCreator();
                 FragmentTransaction fragmentTransaction = ((FragmentActivity) Objects.requireNonNull(getContext())).getSupportFragmentManager().beginTransaction();
-                fragmentTransaction.replace(R.id.container_fragments, birthdayCreation);
+                fragmentTransaction.replace(R.id.container_fragments, birthdayCreator);
                 fragmentTransaction.addToBackStack("addBirthday");
                 fragmentTransaction.commit();
             }

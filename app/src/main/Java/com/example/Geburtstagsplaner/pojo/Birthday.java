@@ -52,8 +52,6 @@ public class Birthday {
         calendarDate.setTime(today);
         Calendar date = Calendar.getInstance();
         date.set(year, month - 1, day);
-        //compare current date (today) to date set
-        //set all values 0 if date set is greater
         if (date.after(calendarDate)) {
             day = 0;
             month = 0;
