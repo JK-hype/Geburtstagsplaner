@@ -54,8 +54,10 @@ public class BirthdayEditor extends Fragment {
         btnDeleteEntry = view.findViewById(R.id.btn_deleteEntry);
 
         String title = "Geburtstag ändern";
-        Objects.requireNonNull(((AppCompatActivity) Objects.requireNonNull(getActivity())).getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
-        Objects.requireNonNull(((AppCompatActivity) getActivity()).getSupportActionBar()).setTitle(title);
+        Objects.requireNonNull(((AppCompatActivity) Objects.requireNonNull(getActivity()))
+                .getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
+        Objects.requireNonNull(((AppCompatActivity) getActivity()).getSupportActionBar())
+                .setTitle(title);
 
         txtName.setHint(birthday.getName());
         txtDateField.setHint(birthday.getDate());
@@ -119,23 +121,24 @@ public class BirthdayEditor extends Fragment {
                 AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
                 builder.setCancelable(true);
                 builder.setTitle("Löschen");
-                builder.setMessage("Willst du " + birthday.getName() + "," + birthday.getDate() + " löschen?");
+                builder.setMessage("Willst du " + birthday.getName() + ", " + birthday.getDate() + " löschen?");
                 builder.setPositiveButton("Ja",
                         new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 if (databasehelper.deleteBirthdayById(id)) {
                                     ShortToast.makeToast(getContext(), birthday.getName()
-                                            + "," + birthday.getDate() + "wurde gelöscht.");
+                                            + "," + birthday.getDate() + " wurde gelöscht.");
                                     AllEntries allEntries = new AllEntries();
                                     FragmentTransaction fragmentTransaction = ((FragmentActivity)
-                                            Objects.requireNonNull(getContext())).getSupportFragmentManager().beginTransaction();
+                                            Objects.requireNonNull(getContext()))
+                                            .getSupportFragmentManager().beginTransaction();
                                     fragmentTransaction.replace(R.id.container_fragments, allEntries);
                                     fragmentTransaction.addToBackStack("ListAllEntries");
                                     fragmentTransaction.commit();
                                 } else {
                                     ShortToast.makeToast(getContext(), birthday.getName()
-                                            + "," + birthday.getDate() + "konnte nicht gelöscht werden.");
+                                            + ", " + birthday.getDate() + " konnte nicht gelöscht werden.");
                                 }
                             }
                         });

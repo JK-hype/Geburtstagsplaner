@@ -24,7 +24,7 @@ import com.example.Geburtstagsplaner.util.ShortToast;
 import java.util.Calendar;
 import java.util.Objects;
 
-public class BirthdayCreation extends Fragment {
+public class BirthdayCreator extends Fragment {
 
     private android.widget.EditText name;
     private TextView dateField;
@@ -67,9 +67,9 @@ public class BirthdayCreation extends Fragment {
                 int month = calendar.get(Calendar.MONTH);
                 int day = calendar.get(Calendar.DAY_OF_MONTH);
                 if (tempBirthday.getYear() != 0) {
-                    year = birthday.getYear();
-                    month = birthday.getMonth();
-                    day = birthday.getDay();
+                    year = tempBirthday.getYear();
+                    month = tempBirthday.getMonth() - 1;
+                    day = tempBirthday.getDay();
                 }
 
                 DatePickerDialog datePickerDialog = new DatePickerDialog(getActivity(),
@@ -105,14 +105,17 @@ public class BirthdayCreation extends Fragment {
                         ShortToast.makeToast(getContext(), "Gib einen zulässigen Name ein.");
                     } else {
                         if (databasehelper.getIdByBirthday(birthday) != -1) {
-                            ShortToast.makeToast(getContext(), "Dieser Eintrag besteht bereits.");
+                            ShortToast.makeToast(getContext(),
+                                    "Dieser Eintrag besteht bereits.");
                         } else {
                             if (databasehelper.addBirthday(birthday)) {
-                                ShortToast.makeToast(getContext(), "Geburtstag wurde hinzugefügt.");
+                                ShortToast.makeToast(getContext(),
+                                        "Geburtstag wurde hinzugefügt.");
                                 tempBirthday = birthday.clone();
                                 birthday = new Birthday();
                             } else {
-                                ShortToast.makeToast(getContext(), "Geburtstag konnte nicht hinzugefügt werden.");
+                                ShortToast.makeToast(getContext(),
+                                        "Geburtstag konnte nicht hinzugefügt werden.");
                             }
                         }
                     }

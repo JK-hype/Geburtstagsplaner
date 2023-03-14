@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Geburtstagsplaner</string>
     <string name="excel">exports the database to an excel file</string>
-    <string name="add">transacts to the birthdayCreation fragment in order to add db entry</string>
+    <string name="add">transacts to the birthdayCreator fragment in order to add db entry</string>
     <string name="importing">Importieren</string>
     <string name="all_birthdays">Alle Geburtstage</string>
     <string name="pathname_for_excel_file">Gib den Pfad für die Excel Datei ein.</string>
