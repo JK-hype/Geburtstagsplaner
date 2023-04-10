@@ -3,13 +3,12 @@ plugins {
 }
 
 android {
-    compileSdkVersion 30
-    buildToolsVersion "30.0.3"
+    compileSdk 33
 
     defaultConfig {
         applicationId "com.example.geburtstagsplaner"
-        minSdkVersion 26
-        targetSdkVersion 30
+        minSdk 26
+        targetSdk 33
         versionCode 1
         versionName "1.1"
 
