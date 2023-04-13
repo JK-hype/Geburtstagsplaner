@@ -15,7 +15,7 @@ import androidx.work.Worker;
 import androidx.work.WorkerParameters;
 
 import com.example.Geburtstagsplaner.R;
-import com.example.Geburtstagsplaner.WhatsAppOpener;
+import com.example.Geburtstagsplaner.StartOpenContactFragmentActivity;
 import com.example.Geburtstagsplaner.pojo.Birthday;
 
 import java.util.ArrayList;
@@ -23,7 +23,7 @@ import java.util.Calendar;
 
 public class NotificationsWorker extends Worker {
 
-    final String CHANNEL_ID = "Notification_Channel_Birthday";
+    final String CHANNEL_ID = "NOTIFICATION_CHANNEL_BIRTHDAY";
 
     public NotificationsWorker(@NonNull Context context, @NonNull WorkerParameters workerParams) {
         super(context, workerParams);
@@ -50,7 +50,7 @@ public class NotificationsWorker extends Worker {
         }
 
         NotificationChannel channel = new NotificationChannel(CHANNEL_ID,
-                "Notification_Birthday_App", NotificationManager.IMPORTANCE_HIGH);
+                "NOTIFICATION_CHANNEL_BIRTHDAY", NotificationManager.IMPORTANCE_HIGH);
         channel.setDescription(getApplicationContext().getString(R.string.channel_description));
         NotificationManager notificationManager = getApplicationContext().
                 getSystemService(NotificationManager.class);
@@ -63,7 +63,7 @@ public class NotificationsWorker extends Worker {
         //random number
         int i = 888;
         for (String name : names) {
-            Intent intent = new Intent(getApplicationContext(), WhatsAppOpener.class);
+            Intent intent = new Intent(getApplicationContext(), StartOpenContactFragmentActivity.class);
             intent.putExtra("name", name);
             PendingIntent pendingIntent = PendingIntent.getActivity(getApplicationContext(),
                     0, intent, PendingIntent.FLAG_ONE_SHOT);
@@ -78,6 +78,4 @@ public class NotificationsWorker extends Worker {
 
         return Result.success();
     }
-
-
 }

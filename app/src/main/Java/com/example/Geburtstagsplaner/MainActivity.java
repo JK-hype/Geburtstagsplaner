@@ -1,13 +1,19 @@
 package com.example.Geburtstagsplaner;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.FragmentManager;
 import androidx.work.ExistingPeriodicWorkPolicy;
 import androidx.work.PeriodicWorkRequest;
 import androidx.work.WorkManager;
 
+import android.Manifest;
+import android.app.Activity;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.MenuItem;
 
@@ -22,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
     /*
     App for saving and displaying Birthdays, includes Notifications,Import and Export of Database
     created by: Jan Kramer
-    Version: 1.0
+    Version: 1.1
      */
 
     Toolbar toolbar;
@@ -36,7 +42,10 @@ public class MainActivity extends AppCompatActivity {
         workManager.pruneWork();
 
         PeriodicWorkRequest periodicWorkRequest = new PeriodicWorkRequest.Builder
-                (NotificationsWorker.class, 6, TimeUnit.HOURS).build();
+                (NotificationsWorker.class, 6, TimeUnit.SECONDS).build();
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            checkPermission(this);
+        }
         workManager.enqueueUniquePeriodicWork("NotificationPeriodicWork",
                 ExistingPeriodicWorkPolicy.KEEP, periodicWorkRequest);
 
@@ -60,5 +69,14 @@ public class MainActivity extends AppCompatActivity {
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.TIRAMISU)
+    private static void checkPermission(Activity activity) {
+        if (!(ActivityCompat.checkSelfPermission(activity, android.Manifest.permission.POST_NOTIFICATIONS)
+                == PackageManager.PERMISSION_GRANTED)) {
+            ActivityCompat.requestPermissions(activity,
+                    new String[]{Manifest.permission.POST_NOTIFICATIONS}, 1);
+        }
     }
 }
